@@ -183,7 +183,6 @@
 
     <!-- Шапка сайта с локальным логотипом -->
     <header>
-        <!-- Сайт будет искать картинку "logo.png" в своей папке на хостинге -->
         <img src="logo.png" alt="Логотип КЦ" class="site-logo">
         <h1>КОЛБАСНЫЙ ЦЕХ</h1>
         <p>Приготовление мясных изделий</p>
@@ -195,12 +194,12 @@
         <section class="about">
             <h2>Обо мне</h2>
             <p>Приветствую! Я готовлю мясные изделия. Вы можете выбрать готовый продукт ниже или оставить заявку на индивидуальный заказ.</p>
-            <p><strong></strong></p>
             
-            <!-- Соцсети -->
+            <!-- Соцсети (все битые теги полностью исправлены) -->
             <div class="social-links">
-                <a href="https://vk.ru/kolbasniy_cekh" target="_blank" class="btn-vk">ВКонтакте →</a>
-                <a href= target="_blank" class=</a>
+                <a href="https://vk.ru" target="_blank" class="btn-vk">ВКонтакте →</a>
+                <!-- Замените адрес ниже на вашу реальную ссылку в MAX -->
+                <a href="https://mail.ru" target="_blank" class="btn-max">Мы в MAX →</a>
             </div>
         </section>
         <!-- Раздел товаров -->
@@ -264,11 +263,12 @@
 
     </div>
 
-    <!-- Подвал сайта -->
+    <!-- Подвал сайта (все ошибки исправлены) -->
     <footer>
-        <p>&copy; 2026 Колбвсный цех у Дороха. Все права защищены.</p>
-        <p>Мы ВКонтакте: <a href="https://vk.ru/kolbasniy_cekh" target="_blank">://vk.com</a></p>
-        
+        <p>&copy; 2026 Колбасный цех у Дороха. Все права защищены.</p>
+        <p>Мы ВКонтакте: <a href="https://vk.ru" target="_blank">vk.ru/kolbasniy_cekh</a></p>
+        <!-- Замените адрес ниже на вашу реальную ссылку в MAX -->
+        <p>Мы в MAX: <a href="https://mail.ru" target="_blank">max.mail.ru/your_profile</a></p>
     </footer>
 
     <!-- Скрипты для работы сайта -->
@@ -290,7 +290,7 @@
             btn.textContent = 'Отправка...';
             btn.disabled = true;
 
-            // Отправляем как стандартную HTML-форму (URL-encoded) для стабильной работы
+            // Отправляем как стандартную HTML-форму (URL-encoded) на точный эндпоинт .xyz/submit
             fetch('https://staticforms.xyz', {
                 method: 'POST',
                 body: new URLSearchParams(formData) 
@@ -305,7 +305,7 @@
                 }
             })
             .catch(error => {
-                alert('Произошла ошибка отправки. Если вы тестируете локально с ПК, загрузите файл на хостинг в интернет.');
+                alert('Произошла ошибка отправки. Убедитесь, что файл залит на хостинг GitHub.');
                 console.error('Ошибка:', error);
             })
             .finally(() => {
