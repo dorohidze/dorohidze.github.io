@@ -22,7 +22,7 @@
             text-align: center;
         }
 
-        /* Стиль для круглого аккуратного логотипа */
+        /* Стиль для круглого аккуратного логотипа из папки */
         .site-logo {
             max-width: 100px;
             height: auto;
@@ -181,10 +181,10 @@
 </head>
 <body>
 
-    <!-- Шапка сайта с вашим логотипом -->
+    <!-- Шапка сайта с локальным логотипом -->
     <header>
-        <!-- Прямая ссылка на ваш загруженный логотип -->
-        <img src="https://ibb.co" alt="Логотип КЦ" class="site-logo">
+        <!-- Сайт будет искать картинку "logo.png" в своей папке на хостинге -->
+        <img src="logo.png" alt="Логотип КЦ" class="site-logo">
         <h1>Мастерская Алексея Петрова</h1>
         <p>Изготовление кожаных изделий ручной работы</p>
     </header>
@@ -281,7 +281,7 @@
         
         // Перехват отправки формы (Улучшенный AJAX-запрос)
         document.getElementById('leather-order-form').addEventListener('submit', function(e) {
-            e.preventDefault(); // Железно блокируем переход на другой сайт
+            e.preventDefault(); // Блокируем переход на другой сайт
             
             const btn = document.getElementById('submit-btn');
             const formData = new FormData(this);
