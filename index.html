@@ -195,7 +195,6 @@
             <h2>Обо мне</h2>
             <p>Приветствую! Я готовлю мясные изделия. Вы можете выбрать готовый продукт ниже или оставить заявку на индивидуальный заказ.</p>
             
-            <!-- Соцсети (все битые теги полностью исправлены) -->
             <div class="social-links">
                 <a href="https://vk.ru" target="_blank" class="btn-vk">ВКонтакте →</a>
                 <!-- Замените адрес ниже на вашу реальную ссылку в MAX -->
@@ -222,15 +221,19 @@
 
         </section>
 
-        <!-- Умная форма заказа -->
+        <!-- Умная форма заказа (Отправка силами самого браузера на 100% надежный адрес) -->
         <section class="order-form" id="order-section">
             <h2>Оформить заказ</h2>
             
-            <form id="leather-order-form">
+            <!-- Браузер теперь сам отправляет данные, минуя любые сложные скрипты -->
+            <form action="https://api.staticforms.dev/submit" method="POST">
                 
                 <!-- Ваш рабочий ключ с панели staticforms.dev -->
                 <input type="hidden" name="apiKey" value="sf_951d0800807debaa07066e7c">
                 <input type="hidden" name="subject" value="Новый заказ с сайта-визитки">
+                
+                <!-- АВТОРЕДИРЕКТ: Скрипт ниже сам пропишет сюда адрес вашей страницы, чтобы вернуть клиента после заказа -->
+                <input type="hidden" name="redirectTo" id="redirect-url" value="">
 
                 <div class="form-group">
                     <label for="product-name">Выбранный товар:</label>
@@ -257,13 +260,13 @@
                     <textarea id="message" name="message" rows="4" placeholder="Пожелания к заказу..."></textarea>
                 </div>
 
-                <button type="submit" class="btn" id="submit-btn" style="width: 100%;">Отправить заказ</button>
+                <button type="submit" class="btn" style="width: 100%;">Отправить заказ</button>
             </form>
         </section>
 
     </div>
 
-    <!-- Подвал сайта (все ошибки исправлены) -->
+    <!-- Подвал сайта -->
     <footer>
         <p>&copy; 2026 Колбасный цех у Дороха. Все права защищены.</p>
         <p>Мы ВКонтакте: <a href="https://vk.ru" target="_blank">vk.ru/kolbasniy_cekh</a></p>
@@ -271,7 +274,7 @@
         <p>Мы в MAX: <a href="https://mail.ru" target="_blank">max.mail.ru/your_profile</a></p>
     </footer>
 
-    <!-- Скрипты для работы сайта -->
+    <!-- Простейшие функции навигации -->
     <script>
         // Функция автоматического выбора товара и прокрутки вниз
         function selectProduct(productName) {
@@ -279,40 +282,8 @@
             document.getElementById('order-section').scrollIntoView({ behavior: 'smooth' });
         }
         
-        // Перехват отправки формы (Улучшенный AJAX-запрос)
-        document.getElementById('leather-order-form').addEventListener('submit', function(e) {
-            e.preventDefault(); // Блокируем переход на другой сайт
-            
-            const btn = document.getElementById('submit-btn');
-            const formData = new FormData(this);
-            
-            // Визуально меняем состояние кнопки
-            btn.textContent = 'Отправка...';
-            btn.disabled = true;
-
-            // Отправляем как стандартную HTML-форму (URL-encoded) на точный эндпоинт .xyz/submit
-            fetch('https://staticforms.xyz', {
-                method: 'POST',
-                body: new URLSearchParams(formData) 
-            })
-            .then(response => response.json())
-            .then(data => {
-                if(data.success) {
-                    alert('Спасибо! Ваш заказ успешно отправлен. Я свяжусь с Вами в ближайшее время.');
-                    document.getElementById('leather-order-form').reset(); // Очищаем форму после успеха
-                } else {
-                    alert('Сервер вернул ошибку: ' + data.message);
-                }
-            })
-            .catch(error => {
-                alert('Произошла ошибка отправки. Убедитесь, что файл залит на хостинг GitHub.');
-                console.error('Ошибка:', error);
-            })
-            .finally(() => {
-                btn.textContent = 'Отправить заказ';
-                btn.disabled = false;
-            });
-        });
+        // Автоматически настраиваем адрес возврата на ваш текущий сайт в интернете
+        document.getElementById('redirect-url').value = window.location.href;
     </script>
 
 </body>
