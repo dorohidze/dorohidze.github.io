@@ -1,195 +1,3 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>КОЛБАСНЫЙ ЦЕХ</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-
-        header {
-            background-color: #2c3e50;
-            color: #fff;
-            padding: 30px 20px;
-            text-align: center;
-        }
-        
-        .site-logo {
-            max-width: 120px; /* Задает ширину логотипа, можно менять цифру */
-            height: auto;     /* Сохраняет пропорции картинки */
-            display: block;   /* Позволяет выровнять по центру */
-            margin: 0 auto 15px auto; /* Центрирует и делает отступ снизу */
-        }
-
-
-        .container {
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        .about {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-        }
-
-        .social-links {
-            margin-top: 15px;
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .btn-vk {
-            display: inline-block;
-            background-color: #0077ff;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.9rem;
-            transition: background-color 0.2s;
-        }
-
-        .btn-vk:hover {
-            background-color: #005fd9;
-        }
-
-        .btn-max {
-            display: inline-block;
-            background-color: #ff5c00;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.9rem;
-            transition: background-color 0.2s;
-        }
-
-        .btn-max:hover {
-            background-color: #e05200;
-        }
-
-        .products {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
-
-        .product-card {
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            flex: 1;
-            min-width: 250px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            text-align: center;
-        }
-
-        .product-price {
-            font-size: 1.25rem;
-            color: #e74c3c;
-            font-weight: bold;
-            margin: 10px 0;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: #27ae60;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            font-size: 1rem;
-        }
-
-        .btn:hover {
-            background-color: #219653;
-        }
-
-        .order-form {
-            background: #fff;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        footer {
-            text-align: center;
-            padding: 25px 20px;
-            background-color: #2c3e50;
-            color: white;
-            margin-top: 40px;
-        }
-
-        footer p {
-            margin: 5px 0;
-        }
-
-        footer a {
-            color: #54a0ff;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <img src="logo.png" alt="Логотип" class="site-logo">
-        <h1>КОЛБАСНЫЙ ЦЕХ</h1>
-        <p>Приготовление мяса</p>
-    </header>
-
-    <div class="container">
-        
-        <section class="about">
-            <h2>Обо мне</h2>
-            <p>Приветствую! Я создаю долговечные и стильные аксессуары из натуральной кожи. Вы можете выбрать готовый товар ниже или оставить заявку на индивидуальный заказ.</p>
-            <p><strong>Контакты:</strong> Телефон: +7 (999) 123-45-67 | Email: info@example.com</p>
-            
-            <div class="social-links">
-                <a href="https://vk.com" target="_blank" class="btn-vk">Мы ВКонтакте →</a>
-                <a href="https://mail.ru" target="_blank" class="btn-max">Мы в MAX →</a>
-            </div>
-        </section>
         <!-- Раздел товаров -->
         <h2>Наши товары</h2>
         <section class="products">
@@ -214,7 +22,6 @@
         <section class="order-form" id="order-section">
             <h2>Оформить заказ</h2>
             
-            <!-- Добавили правильный id="leather-order-form" -->
             <form id="leather-order-form">
                 
                 <!-- Ваш рабочий ключ с панели staticforms.dev -->
@@ -259,7 +66,7 @@
         <p>Мы в MAX: <a href="https://mail.ru" target="_blank">max.mail.ru/your_profile</a></p>
     </footer>
 
-    <!-- Обновленный неубиваемый скрипт -->
+    <!-- Скрипты для работы сайта -->
     <script>
         // Функция автоматического выбора товара и прокрутки вниз
         function selectProduct(productName) {
@@ -269,7 +76,7 @@
         
         // Перехват отправки формы (Улучшенный AJAX-запрос)
         document.getElementById('leather-order-form').addEventListener('submit', function(e) {
-            e.preventDefault(); // Теперь железно блокируем переход на другой сайт
+            e.preventDefault(); // Железно блокируем переход на другой сайт
             
             const btn = document.getElementById('submit-btn');
             const formData = new FormData(this);
@@ -278,8 +85,8 @@
             btn.textContent = 'Отправка...';
             btn.disabled = true;
 
-            // Отправляем как стандартную HTML-форму (URL-encoded), чтобы обойти любые блокировки CORS на ПК
-            fetch('https://api.staticforms.dev/submit', {
+            // Отправляем как стандартную HTML-форму (URL-encoded) для стабильной работы
+            fetch('https://staticforms.dev', {
                 method: 'POST',
                 body: new URLSearchParams(formData) 
             })
@@ -293,8 +100,7 @@
                 }
             })
             .catch(error => {
-                // Если браузер все-таки заблокировал фоновый запрос локально, выводим понятную ошибку
-                alert('Локальная защита браузера заблокировала отправку. Чтобы форма работала прямо с компьютера без интернета, временно отключите блокировщики или запустите локальный сервер.');
+                alert('Произошла ошибка отправки. Если вы тестируете локально с ПК, загрузите файл на хостинг в интернет.');
                 console.error('Ошибка:', error);
             })
             .finally(() => {
