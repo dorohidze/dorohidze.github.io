@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сайт-визитка с заказами через Static Forms</title>
+    <title>Мастерская Алексея Петрова — Изделия из кожи</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -35,7 +35,6 @@
             margin-bottom: 30px;
         }
 
-        /* Блок кнопок соцсетей */
         .social-links {
             margin-top: 15px;
             display: flex;
@@ -59,7 +58,6 @@
             background-color: #005fd9;
         }
 
-        /* Стиль для кнопки MAX */
         .btn-max {
             display: inline-block;
             background-color: #ff5c00;
@@ -178,14 +176,12 @@
             <p>Приветствую! Я создаю долговечные и стильные аксессуары из натуральной кожи. Вы можете выбрать готовый товар ниже или оставить заявку на индивидуальный заказ.</p>
             <p><strong>Контакты:</strong> Телефон: +7 (999) 123-45-67 | Email: info@example.com</p>
             
-            <!-- Блок со ссылками на соцсети -->
             <div class="social-links">
                 <a href="https://vk.com" target="_blank" class="btn-vk">Мы ВКонтакте →</a>
-                <!-- ВНИМАНИЕ: Замените ссылку ниже на ваш профиль в MAX -->
                 <a href="https://mail.ru" target="_blank" class="btn-max">Мы в MAX →</a>
             </div>
         </section>
-
+        <!-- Раздел товаров -->
         <h2>Наши товары</h2>
         <section class="products">
             
@@ -205,16 +201,14 @@
 
         </section>
 
-        <!-- Форма заказа с интеграцией Static Forms -->
+        <!-- Умная форма заказа -->
         <section class="order-form" id="order-section">
             <h2>Оформить заказ</h2>
             
-            <form action="https://staticforms.xyz" method="POST">
+            <form id="leather-order-form">
                 
-                <!-- ВНИМАНИЕ: Вставьте ваш Access Key между кавычками в поле value ниже -->
-                <input type="hidden" name="accessKey" value="sf_951d0800807debaa07066e7c">
-                
-                <input type="hidden" name="redirectTo" value="">
+                <!-- Ваш рабочий ключ с панели staticforms.dev -->
+                <input type="hidden" name="apiKey" value="sf_951d0800807debaa07066e7c">
                 <input type="hidden" name="subject" value="Новый заказ с сайта-визитки">
 
                 <div class="form-group">
@@ -228,8 +222,13 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="user-email">Ваш Email для связи:</label>
+                    <input type="email" id="user-email" name="email" required placeholder="dorohidze@gmail.com">
+                </div>
+
+                <div class="form-group">
                     <label for="user-phone">Телефон для связи:</label>
-                    <input type="tel" id="user-phone" name="phone" required placeholder="+7 (999) 000-00-00">
+                    <input type="tel" id="user-phone" name="phone" placeholder="+7 (999) 000-00-00">
                 </div>
 
                 <div class="form-group">
@@ -237,26 +236,68 @@
                     <textarea id="message" name="message" rows="4" placeholder="Пожелания к заказу..."></textarea>
                 </div>
 
-                <button type="submit" class="btn" style="width: 100%;">Отправить заказ</button>
+                <button type="submit" class="btn" id="submit-btn" style="width: 100%;">Отправить заказ</button>
             </form>
         </section>
 
     </div>
 
+    <!-- Подвал сайта -->
     <footer>
         <p>&copy; 2026 Мастерская Алексея Петрова. Все права защищены.</p>
         <p>Мы ВКонтакте: <a href="https://vk.com" target="_blank">://vk.com</a></p>
-        <!-- Ссылка на MAX в подвале -->
         <p>Мы в MAX: <a href="https://mail.ru" target="_blank">max.mail.ru/your_profile</a></p>
     </footer>
 
+    <!-- Скрипты для работы сайта -->
     <script>
+        // Функция автоматического выбора товара и прокрутки вниз
         function selectProduct(productName) {
             document.getElementById('product-name').value = productName;
             document.getElementById('order-section').scrollIntoView({ behavior: 'smooth' });
         }
         
-        document.querySelector('input[name="redirectTo"]').value = window.location.href;
+        // Перехват отправки формы (AJAX-запрос)
+        document.getElementById('leather-order-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Запрещаем браузеру переходить на сайт staticforms
+            
+            const btn = document.getElementById('submit-btn');
+            const formData = new FormData(this);
+            
+            // Превращаем поля формы в нужный для API JSON-формат
+            const object = {};
+            formData.forEach((value, key) => object[key] = value);
+            const json = JSON.stringify(object);
+            
+            // Визуально меняем состояние кнопки
+            btn.textContent = 'Отправка...';
+            btn.disabled = true;
+
+            // Отправляем данные в фоновом режиме на новый сервер
+            fetch('https://staticforms.dev', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: json
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.success) {
+                    // Если сервис принял форму — очищаем поля и радуем клиента сообщением
+                    alert('Спасибо! Ваш заказ успешно отправлен. Мы свяжемся с вами в ближайшее время.');
+                    document.getElementById('leather-order-form').reset();
+                } else {
+                    alert('Произошла ошибка при отправке: ' + data.message);
+                }
+            })
+            .catch(error => {
+                alert('Ошибка сети. Проверьте подключение к интернету.');
+            })
+            .finally(() => {
+                // Возвращаем кнопку в исходное рабочее состояние
+                btn.textContent = 'Отправить заказ';
+                btn.disabled = false;
+            });
+        });
     </script>
 
 </body>
