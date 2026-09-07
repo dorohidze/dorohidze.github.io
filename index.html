@@ -200,25 +200,25 @@
             <!-- Соцсети -->
             <div class="social-links">
                 <a href="https://vk.ru/kolbasniy_cekh" target="_blank" class="btn-vk">ВКонтакте →</a>
-                <a href="https://mail.ru" target="_blank" class="btn-max">Мы в MAX →</a>
+                <a href= target="_blank" class=</a>
             </div>
         </section>
         <!-- Раздел товаров -->
-        <h2>Готовые продукты</h2>
+        <h2>Готовые мясные изделия</h2>
         <section class="products">
             
             <div class="product-card">
                 <h3>Кожаный кошелек "Классик"</h3>
-                <p>Компактное портмоне из натуральной кожи. Имеет 4 слота для карт.</p>
-                <div class="product-price">3 500 руб.</div>
-                <button class="btn" onclick="selectProduct('Кожаный кошелек Классик')">Купить</button>
+                <p>Щепа из вяленной куриной грудки. 500г.</p>
+                <div class="product-price">800 руб.</div>
+                <button class="btn" onclick="selectProduct('Щепа из вяленной куриной грудки. 500г.')">Купить</button>
             </div>
 
             <div class="product-card">
                 <h3>Ремень "Оригинал"</h3>
-                <p>Классический брючный ремень с литой латунной пряжкой.</p>
-                <div class="product-price">2 900 руб.</div>
-                <button class="btn" onclick="selectProduct('Ремень Оригинал')">Купить</button>
+                <p>Вяленые кусочки куриной грудки. 500г.</p>
+                <div class="product-price">700 руб.</div>
+                <button class="btn" onclick="selectProduct('Вяленые кусочки куриной грудки. 500г.')">Купить</button>
             </div>
 
         </section>
@@ -266,9 +266,9 @@
 
     <!-- Подвал сайта -->
     <footer>
-        <p>&copy; 2026 Мастерская Алексея Петрова. Все права защищены.</p>
-        <p>Мы ВКонтакте: <a href="https://vk.com" target="_blank">://vk.com</a></p>
-        <p>Мы в MAX: <a href="https://mail.ru" target="_blank">max.mail.ru/your_profile</a></p>
+        <p>&copy; 2026 Колбвсный цех у Дороха. Все права защищены.</p>
+        <p>Мы ВКонтакте: <a href="https://vk.ru/kolbasniy_cekh" target="_blank">://vk.com</a></p>
+        
     </footer>
 
     <!-- Скрипты для работы сайта -->
@@ -298,7 +298,7 @@
             .then(response => response.json())
             .then(data => {
                 if(data.success) {
-                    alert('Спасибо! Ваш заказ успешно отправлен. Мы свяжемся с вами в ближайшее время.');
+                    alert('Спасибо! Ваш заказ успешно отправлен. Я свяжусь с Вами в ближайшее время.');
                     document.getElementById('leather-order-form').reset(); // Очищаем форму после успеха
                 } else {
                     alert('Сервер вернул ошибку: ' + data.message);
