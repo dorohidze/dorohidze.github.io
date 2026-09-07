@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт-визитка с заказами через Static Forms</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .about {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        /* Блок кнопок соцсетей */
+        .social-links {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn-vk {
+            display: inline-block;
+            background-color: #0077ff;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: background-color 0.2s;
+        }
+
+        .btn-vk:hover {
+            background-color: #005fd9;
+        }
+
+        /* Стиль для кнопки MAX */
+        .btn-max {
+            display: inline-block;
+            background-color: #ff5c00;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: background-color 0.2s;
+        }
+
+        .btn-max:hover {
+            background-color: #e05200;
+        }
+
+        .products {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .product-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            flex: 1;
+            min-width: 250px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .product-price {
+            font-size: 1.25rem;
+            color: #e74c3c;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #27ae60;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #219653;
+        }
+
+        .order-form {
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px 20px;
+            background-color: #2c3e50;
+            color: white;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        footer a {
+            color: #54a0ff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Мастерская Алексея Петрова</h1>
+        <p>Изготовление кожаных изделий ручной работы</p>
+    </header>
+
+    <div class="container">
+        
+        <section class="about">
+            <h2>Обо мне</h2>
+            <p>Приветствую! Я создаю долговечные и стильные аксессуары из натуральной кожи. Вы можете выбрать готовый товар ниже или оставить заявку на индивидуальный заказ.</p>
+            <p><strong>Контакты:</strong> Телефон: +7 (999) 123-45-67 | Email: info@example.com</p>
+            
+            <!-- Блок со ссылками на соцсети -->
+            <div class="social-links">
+                <a href="https://vk.com" target="_blank" class="btn-vk">Мы ВКонтакте →</a>
+                <!-- ВНИМАНИЕ: Замените ссылку ниже на ваш профиль в MAX -->
+                <a href="https://mail.ru" target="_blank" class="btn-max">Мы в MAX →</a>
+            </div>
+        </section>
+
+        <h2>Наши товары</h2>
+        <section class="products">
+            
+            <div class="product-card">
+                <h3>Кожаный кошелек "Классик"</h3>
+                <p>Компактное портмоне из натуральной кожи. Имеет 4 слота для карт.</p>
+                <div class="product-price">3 500 руб.</div>
+                <button class="btn" onclick="selectProduct('Кожаный кошелек Классик')">Купить</button>
+            </div>
+
+            <div class="product-card">
+                <h3>Ремень "Оригинал"</h3>
+                <p>Классический брючный ремень с литой латунной пряжкой.</p>
+                <div class="product-price">2 900 руб.</div>
+                <button class="btn" onclick="selectProduct('Ремень Оригинал')">Купить</button>
+            </div>
+
+        </section>
+
+        <!-- Форма заказа с интеграцией Static Forms -->
+        <section class="order-form" id="order-section">
+            <h2>Оформить заказ</h2>
+            
+            <form action="https://staticforms.xyz" method="POST">
+                
+                <!-- ВНИМАНИЕ: Вставьте ваш Access Key между кавычками в поле value ниже -->
+                <input type="hidden" name="accessKey" value="ВСТАВЬТЕ_СЮДА_ВАШ_КЛЮЧ">
+                
+                <input type="hidden" name="redirectTo" value="">
+                <input type="hidden" name="subject" value="Новый заказ с сайта-визитки">
+
+                <div class="form-group">
+                    <label for="product-name">Выбранный товар:</label>
+                    <input type="text" id="product-name" name="$product" placeholder="Выберите товар выше или введите вручную">
+                </div>
+
+                <div class="form-group">
+                    <label for="user-name">Ваше имя:</label>
+                    <input type="text" id="user-name" name="name" required placeholder="Иван Иванов">
+                </div>
+
+                <div class="form-group">
+                    <label for="user-phone">Телефон для связи:</label>
+                    <input type="tel" id="user-phone" name="phone" required placeholder="+7 (999) 000-00-00">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Комментарий:</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Пожелания к заказу..."></textarea>
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%;">Отправить заказ</button>
+            </form>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Мастерская Алексея Петрова. Все права защищены.</p>
+        <p>Мы ВКонтакте: <a href="https://vk.com" target="_blank">://vk.com</a></p>
+        <!-- Ссылка на MAX в подвале -->
+        <p>Мы в MAX: <a href="https://mail.ru" target="_blank">max.mail.ru/your_profile</a></p>
+    </footer>
+
+    <script>
+        function selectProduct(productName) {
+            document.getElementById('product-name').value = productName;
+            document.getElementById('order-section').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        document.querySelector('input[name="redirectTo"]').value = window.location.href;
+    </script>
+
+</body>
+</html>
